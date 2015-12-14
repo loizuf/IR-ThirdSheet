@@ -30,7 +30,7 @@ public class Index {
 	}
 	// TASK 1 end
 	
-	// TASK 2 start
+	// TASK 3 start
 	// normalizes a vector
 	public ArrayList<Integer> normalize(ArrayList<Integer> vector) {
 		return null;
@@ -40,5 +40,5 @@ public class Index {
 	public ArrayList<Integer> vectorSearch(String[] query, int k){
 		return null;
 	}
-	// TASK 2 end
+	// TASK 3 end
 }
