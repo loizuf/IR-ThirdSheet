@@ -1,67 +1,71 @@
 package _thirdTest;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import static org.junit.Assert.*;
 
-import _secondGiven.FileReader;
-import _secondWork.Index;
+import _thirdGiven.FileReader;
+import _thirdWork.Index;
 
 @RunWith(Parameterized.class)
 public class TestNormalization {
 
 	// Location of test collection
 	private static final String TEST_PATH_2 = "collections/testCollections/second";
-	private static final double ERROR_MARGIN = 0.001f;
+	private static final float ERROR_MARGIN = 0.000001f;
 
 	// Variable containing an instance of PositionalIndex
 	private Index index;
 		
 	// parameterized variables
-	private ArrayList<Integer> vector;
-	private ArrayList<Float> expectedResult;
+	private int[][] vectorInputs;
+	private float[][] expectedResults;
 
-	public TestNormalization(ArrayList<Integer> vector, ArrayList<Float> expectedResult) throws FileNotFoundException {
+	public TestNormalization() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_2));
 		
-		this.vector = vector;
-		this.expectedResult = expectedResult;
+		fillVariables();
+		testNormalize();
 	}
 
 	@Test
-	public void testNormalize() {
-		//assertArrayEquals(expectedResult, round(index.normalize(vector)));
+	private void testNormalize() {
+		assertArrayEquals("No Input", expectedResults[0], index.normalize(vectorInputs[0]), ERROR_MARGIN);
+		assertArrayEquals("Input is '0'", expectedResults[1], index.normalize(vectorInputs[1]), ERROR_MARGIN);
+		assertArrayEquals("Input is '1'", expectedResults[2], index.normalize(vectorInputs[2]), ERROR_MARGIN);
+		assertArrayEquals("Single number, not '1'", expectedResults[3], index.normalize(vectorInputs[3]), ERROR_MARGIN);
+		assertArrayEquals("Two numbers", expectedResults[4], index.normalize(vectorInputs[4]), ERROR_MARGIN);
+		assertArrayEquals("Three numbers, two are equal", expectedResults[5], index.normalize(vectorInputs[5]), ERROR_MARGIN);
+		assertArrayEquals("Three numbers, all are equal", expectedResults[6], index.normalize(vectorInputs[6]), ERROR_MARGIN);
+		assertArrayEquals("Three numbers, none are equal", expectedResults[7], index.normalize(vectorInputs[7]), ERROR_MARGIN);
 	}
-	
+
 	// This method sets up the data for the tests
-	// the third variable is used to display a description to the students
-	@Parameters (name = "{2}")
-	public static List<Object[]> data() {
-		return Arrays
-				.asList(new Object[][] { 
-					{new ArrayList<Integer>(Arrays.asList(new Integer[] { 3, 4 })), new ArrayList<Float>(Arrays.asList(new Float[] { 0.6f, 0.8f })), "Two normal Parameters"},
-					{new ArrayList<Integer>(Arrays.asList(new Integer[] { 3, 4 })), new ArrayList<Float>(Arrays.asList(new Float[] { 0.6f, 0.8f })), ""},
-				});
+	private void fillVariables() {
+
+		vectorInputs = new int[][]{
+			{},
+			{0},
+			{1},
+			{9},
+			{3, 4},
+			{3, 5, 3},
+			{25, 25, 25},
+			{7, 3, 6}
+		};
+		expectedResults = new float[][]{
+			{},
+			{0},
+			{1},
+			{1},
+			{0.6f, 0.8f},
+			{0.457496f, 0.762493f, 0.457496f},
+			{0.57735f, 0.57735f, 0.57735f},
+			{0.721995f, 0.309426f, 0.618853f}
+		};
 	}
-	
-    public static float[] round(float[] d, int decimalPlace) {
-    	float[] result = new float[d.length];
-    	for (int i = 0; i < d.length; i++) {
-            BigDecimal bd = new BigDecimal(Float.toString(d[i]));
-            bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
-            result[i] = bd.floatValue();
-		}
-    	return result;
-
-    }
-
 }
