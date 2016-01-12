@@ -1,8 +1,8 @@
-package _secondWork;
+package _thirdWork;
 
 import java.util.ArrayList;
 
-import _secondGiven.Document;
+import _thirdGiven.Document;
 
 public class Index {
 	
@@ -20,19 +20,19 @@ public class Index {
 	}
 
 	// returns the idf for this term in the collection
-	public int getIDF(String term) {
+	public float getIDF(String term) {
 		return 0;
 	}
 	
 	// returns the tf.idf score for this term and document
-	public int getTF_IDF_Score(String query, int docID) {
+	public float getTF_IDF_Score(String query, int docID) {
 		return 0;
 	}
 	// TASK 1 end
 	
 	// TASK 3 start
 	// normalizes a vector
-	public ArrayList<Integer> normalize(ArrayList<Integer> vector) {
+	public float[] normalize(int[] vector) {
 		return null;
 	}
 	

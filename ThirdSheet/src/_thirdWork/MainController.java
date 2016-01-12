@@ -1,11 +1,11 @@
-package _secondWork;
+package _thirdWork;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import _secondGiven.Document;
-import _secondGiven.FileReader;
+import _thirdGiven.Document;
+import _thirdGiven.FileReader;
 
 public class MainController {
 
