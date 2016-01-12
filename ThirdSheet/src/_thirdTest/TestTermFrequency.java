@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import _secondGiven.FileReader;
-import _secondWork.Index;
+import _thirdGiven.FileReader;
+import _thirdWork.Index;
 
 @RunWith(Parameterized.class)
 public class TestTermFrequency {
