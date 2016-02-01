@@ -9,14 +9,20 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import _thirdGiven.FileReader;
+import _thirdWork.Index;
+
 @RunWith(Parameterized.class)
 public class TestSearch {
 
 	// Location of test collection
 	private static final String TEST_PATH_2 = "collections/testCollections/second";
 
+	// Variable containing an instance of PositionalIndex
+	private Index index;
+	
 	public TestSearch() throws FileNotFoundException {
-		
+		index = new Index(FileReader.readCollection(TEST_PATH_2));
 	}
 
 	@Test
