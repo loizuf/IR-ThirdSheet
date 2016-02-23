@@ -32,7 +32,9 @@ public class MainController {
 		postResults(result);
 	}
 
-	// Bearbeiten sie Aufgabe 3 hier.
+	/*
+	 * Diese Methode liest die Query Terme vom User ein und bereinigt sie (lower case, eliminating whitespace)
+	 */
 	public static String[] getQueryTerms() {
 		// let's get a query from the user via the command line
 		Scanner scanner = new Scanner(System.in);
