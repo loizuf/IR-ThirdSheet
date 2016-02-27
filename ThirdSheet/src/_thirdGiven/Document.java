@@ -1,14 +1,13 @@
 package _thirdGiven;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 
 /*
  * Objekte dieser Klasse zu erzeugen und zu speichern würde in einem echten IR-System keinen Sinn machen.
  * Diese Klasse existiert um alle Dateien als Objekte zu repräsentieren und den Zugang zu den Dateien zu erleichtern
  */
-public class Document implements Indexable {
+public class Document {
 
 	/*
 	 * wordList - Liste aller Wörter in der Reihenfolge in der sie im Text auftauchen (mit Vielfachen)
@@ -37,12 +36,24 @@ public class Document implements Indexable {
 		return name;
 	}
 
+	/**
+	 * Returns an ArrayList containing all words in the Document or query (without
+	 * duplicates)
+	 * 
+	 * @return wordList - HashMap of all words (without duplicates)
+	 */
 	// Interface Methode (Indexable)
 	public ArrayList<String> getUniqueWordList() {
 		ArrayList<String> uniqueWordList = new ArrayList<String>(new LinkedHashSet<>(wordList));
 		return uniqueWordList;
 	}
-
+	
+	/**
+	 * Returns an ArrayList containing all words in the Document or query (with
+	 * duplicates)
+	 * 
+	 * @return wordList - HashMap of all words (with duplicates)
+	 */
 	// Interface Methode (Indexable)
 	public ArrayList<String> getWordList() {
 		return wordList;
