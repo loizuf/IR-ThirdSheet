@@ -1,6 +1,9 @@
 package _thirdTest;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,13 +24,21 @@ public class TestSearch {
 	// Variable containing an instance of PositionalIndex
 	private Index index;
 	
-	public TestSearch() throws FileNotFoundException {
+	// parameterized variables
+	private String[] inputString;
+	private ArrayList<Integer> expectedResult;
+	
+	public TestSearch(String[] inputString, ArrayList<Integer> expectedResult, String message)
+			throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_2));
+
+		this.inputString = inputString;
+		this.expectedResult = expectedResult;
 	}
 
 	@Test
-	public void testPerformANDMerge() {
-		
+	public void testVectorSearch() {
+		assertEquals(expectedResult, index.vectorSearch(inputString, 1));
 	}
 	
 	// This method sets up the data for the tests
@@ -36,7 +47,26 @@ public class TestSearch {
 	public static List<Object[]> data() {
 		return Arrays
 				.asList(new Object[][] { 
-					
+					{ new String[] {"purple"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1 })), "Single Document" },
+					{ new String[] {"corn"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 2, 3, 5 })), "Multiple Documents" },
+					{ new String[] {"moon"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 2, 3, 5 })), "Term at the end of a Document" },
+					{ new String[] {"soylent"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 2 })), "Term at the start of a Document" },
+					{ new String[] {"cook"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { })), "No Document" },
+					{ new String[] {"is", "null"}, new ArrayList<Integer>(), "2. Term nicht vorhanden" },
+					{ new String[] {"naught", "is"}, new ArrayList<Integer>(), "1. Term nicht vorhanden" },
+					{ new String[] {"naught", "null"}, new ArrayList<Integer>(), "Beide Terme nicht vorhanden" },
+					{ new String[] {"there", "is"}, new ArrayList<Integer>().add(0), "Match am Anfang" },
+					{ new String[] {"the", "sea"}, new ArrayList<Integer>().add(4), "Match am Ende" },
+					{ new String[] {"eating", "collars"}, new ArrayList<Integer>().add(5), "Match in der Mitte" },
+					{ new String[] {"space", "station"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 2, 6, 7 })), "Mehrere Matches" },
+					{ new String[] {"moon", "moon"}, new ArrayList<Integer>(), "Gleiches Wort" },
+					{ new String[] {"there", "is", "no"}, new ArrayList<Integer>().add(0), "3 Wörter, Anfang" },
+					{ new String[] {"is", "people", "eating"}, new ArrayList<Integer>().add(1), "3 Wörter, Mitte" },
+					{ new String[] {"station", "of", "corn"}, new ArrayList<Integer>().add(2), "3 Wörter, Ende" },
+					{ new String[] {"are", "eating", "tree"}, new ArrayList<Integer>().add(3), "2 von 3" },
+					{ new String[] {"is", "green", "no"}, new ArrayList<Integer>(), "falsche Reihenfolge" },
+					{ new String[] {"are", "people", "collars"}, new ArrayList<Integer>(), "nicht nebeneinander" },
+					{ new String[] {"is", "no", "green", "space"}, new ArrayList<Integer>(), "4 Wörter" }
 				});
 	}
 
