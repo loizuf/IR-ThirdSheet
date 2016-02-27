@@ -48,8 +48,6 @@ public class TestSearch {
 		return Arrays
 				.asList(new Object[][] { 
 					{ new String[] {"purple"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0 })), "Single Document" },
-					{ new String[] {"corn"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0, 1, 2, 4 })), "Multiple Documents" },
-					{ new String[] {"moon"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0, 1, 2, 4 })), "Term at the end of a Document" },
 					{ new String[] {"soylent"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 2 })), "Term at the start of a Document" },
 					{ new String[] {"cook"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { })), "No Document" },
 					{ new String[] {"is", "null"}, new ArrayList<Integer>(), "2. Term nicht vorhanden" },
