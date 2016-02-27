@@ -47,9 +47,9 @@ public class TestSearch {
 	public static List<Object[]> data() {
 		return Arrays
 				.asList(new Object[][] { 
-					{ new String[] {"purple"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1 })), "Single Document" },
-					{ new String[] {"corn"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 2, 3, 5 })), "Multiple Documents" },
-					{ new String[] {"moon"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 2, 3, 5 })), "Term at the end of a Document" },
+					{ new String[] {"purple"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0 })), "Single Document" },
+					{ new String[] {"corn"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0, 1, 2, 4 })), "Multiple Documents" },
+					{ new String[] {"moon"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 0, 1, 2, 4 })), "Term at the end of a Document" },
 					{ new String[] {"soylent"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { 2 })), "Term at the start of a Document" },
 					{ new String[] {"cook"}, new ArrayList<Integer>(Arrays.asList(new Integer[] { })), "No Document" },
 					{ new String[] {"is", "null"}, new ArrayList<Integer>(), "2. Term nicht vorhanden" },
@@ -63,10 +63,10 @@ public class TestSearch {
 					{ new String[] {"there", "is", "no"}, new ArrayList<Integer>().add(0), "3 Wörter, Anfang" },
 					{ new String[] {"is", "people", "eating"}, new ArrayList<Integer>().add(1), "3 Wörter, Mitte" },
 					{ new String[] {"station", "of", "corn"}, new ArrayList<Integer>().add(2), "3 Wörter, Ende" },
-					{ new String[] {"are", "eating", "tree"}, new ArrayList<Integer>().add(3), "2 von 3" },
+					{ new String[] {"are", "eating", "tree"}, new ArrayList<Integer>(), "2 von 3" },
 					{ new String[] {"is", "green", "no"}, new ArrayList<Integer>(), "falsche Reihenfolge" },
 					{ new String[] {"are", "people", "collars"}, new ArrayList<Integer>(), "nicht nebeneinander" },
-					{ new String[] {"is", "no", "green", "space"}, new ArrayList<Integer>(), "4 Wörter" }
+					{ new String[] {"is", "no", "green", "space"}, new ArrayList<Integer>().add(6), "4 Wörter" }
 				});
 	}
 
