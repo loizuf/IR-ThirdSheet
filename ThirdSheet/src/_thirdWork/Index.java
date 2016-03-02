@@ -15,7 +15,7 @@ public class Index {
 	}
 	
 	// returns the tf for this term in this document
-	public int getTF(String term, int docID) {
+	public int getTF(String term, Document doc) {
 		return 0;
 	}
 
@@ -25,7 +25,7 @@ public class Index {
 	}
 	
 	// returns the tf.idf score for this term and document
-	public float getTF_IDF_Score(String query, int docID) {
+	public float getTF_IDF_Score(String term, Document doc) {
 		return 0;
 	}
 	// TASK 1 end
@@ -37,8 +37,14 @@ public class Index {
 	}
 	
 	// returns ArrayList of DocId's of the top-k Documents for this Query
-	public ArrayList<Integer> vectorSearch(String[] query, int k){
+	// result should only contain documents with a non-zero score
+	public ArrayList<Integer> vectorSearch(Document query, int k){
 		return null;
 	}
 	// TASK 3 end
+	
+	// Method needed for Testing. DO NOT DELETE
+	public Document getDocument(int documentID){
+		return collection.get(documentID);
+	}
 }
