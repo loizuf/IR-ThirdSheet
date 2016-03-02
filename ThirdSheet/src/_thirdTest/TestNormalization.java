@@ -15,7 +15,7 @@ import _thirdWork.Index;
 public class TestNormalization {
 
 	// Location of test collection
-	private static final String TEST_PATH_2 = "collections/testCollections/second";
+	private static final String TEST_PATH_3 = "collections/testCollections/third";
 	private static final float ERROR_MARGIN = 0.000001f;
 
 	// Variable containing an instance of PositionalIndex
@@ -26,7 +26,7 @@ public class TestNormalization {
 	private float[][] expectedResults;
 
 	public TestNormalization() throws FileNotFoundException {
-		index = new Index(FileReader.readCollection(TEST_PATH_2));
+		index = new Index(FileReader.readCollection(TEST_PATH_3));
 		
 		fillVariables();
 		testNormalize();
