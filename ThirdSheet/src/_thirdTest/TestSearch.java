@@ -4,19 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import _thirdGiven.Document;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-@RunWith(Parameterized.class)
 public class TestSearch {
 
 	// Location of test collection
@@ -25,36 +20,45 @@ public class TestSearch {
 	// Variable containing an instance of PositionalIndex
 	private Index index;
 	
-	// parameterized variables
-	private Document inputDocument;
-	private ArrayList<Integer> expectedResult;
-	
-	public TestSearch(String inputString, ArrayList<Integer> expectedResult, String message)
-			throws FileNotFoundException {
+	@BeforeClass
+	public void setUpBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
-
-		this.inputDocument = new Document(inputString, "Query");
-		this.expectedResult = expectedResult;
 	}
 
 	@Test
-	public void testVectorSearch() {
-		assertEquals(expectedResult, index.vectorSearch(inputDocument, 1));
+	public void TestAbsentTerm() {
+		Document doc = new Document("BAUM", "Query");
+		assertEquals(new ArrayList<Integer>(), index.vectorSearch(doc, 1));
 	}
-	
-	// This method sets up the data for the tests
-	// the third variable is used to display a description to the students
-	@Parameters (name = "{2}")
-	public static List<Object[]> data() {
-		return Arrays
-				.asList(new Object[][] { 
-					{ "andreievich", new ArrayList<Integer>().add(6), "Term in one document" },
-					{ "enterprise", new ArrayList<Integer>().add(5), "Term in multiple documents" },
-					{ "TEST", new ArrayList<Integer>(), "Term not in collection" },
-					{ "doctor marcus", new ArrayList<Integer>().add(2), "One term not in collection" },
-					{ "half logic", new ArrayList<Integer>().add(1), "Terms in multiple documents" },
-					{ "first officer sulu", new ArrayList<Integer>().add(7), "Three terms, all in multiple documents" }
-				});
+
+	@Test
+	public void TestTermInOneDocument() {
+		Document doc = new Document("andreievich", "Query");
+		assertEquals(6, index.vectorSearch(doc, 1).get(0), 0);
+	}
+
+	@Test
+	public void TestTermInMultipleDocuments() {
+		Document doc = new Document("enterprise", "Query");
+		assertEquals(5, index.vectorSearch(doc, 1).get(0), 0);
+	}
+
+	@Test
+	public void TestTwoTermsOneAbsent() {
+		Document doc = new Document("doctor marcus", "Query");
+		assertEquals(2, index.vectorSearch(doc, 1).get(0), 0);
+	}
+
+	@Test
+	public void TestTwoTermsInDifferentDocuments() {
+		Document doc = new Document("half logic", "Query");
+		assertEquals(1, index.vectorSearch(doc, 1).get(0), 0);
+	}
+
+	@Test
+	public void TestThreeTermsInDifferentDocuments() {
+		Document doc = new Document("first officer sulu", "Query");
+		assertEquals(7, index.vectorSearch(doc, 1).get(0), 0);
 	}
 
 }

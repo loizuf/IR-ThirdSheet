@@ -1,17 +1,15 @@
 package _thirdTest;
 
-import java.io.FileNotFoundException;
-import java.math.BigDecimal;
+import static org.junit.Assert.assertArrayEquals;
 
+import java.io.FileNotFoundException;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import static org.junit.Assert.*;
 
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-@RunWith(Parameterized.class)
 public class TestNormalization {
 
 	// Location of test collection
@@ -25,22 +23,50 @@ public class TestNormalization {
 	private int[][] vectorInputs;
 	private float[][] expectedResults;
 
-	public TestNormalization() throws FileNotFoundException {
+	@BeforeClass
+	public void setUpBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 		
 		fillVariables();
-		testNormalize();
 	}
 
 	@Test
-	private void testNormalize() {
+	private void TestNoInput() {
 		assertArrayEquals("No Input", expectedResults[0], index.normalize(vectorInputs[0]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestInputZero() {
 		assertArrayEquals("Input is '0'", expectedResults[1], index.normalize(vectorInputs[1]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestInputOne() {
 		assertArrayEquals("Input is '1'", expectedResults[2], index.normalize(vectorInputs[2]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestInputNotOne() {
 		assertArrayEquals("Single number, not '1'", expectedResults[3], index.normalize(vectorInputs[3]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestTwoNumbers() {
 		assertArrayEquals("Two numbers", expectedResults[4], index.normalize(vectorInputs[4]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestThreeNumbersTwoEqual() {
 		assertArrayEquals("Three numbers, two are equal", expectedResults[5], index.normalize(vectorInputs[5]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestThreeNumbersAllEqual() {
 		assertArrayEquals("Three numbers, all are equal", expectedResults[6], index.normalize(vectorInputs[6]), ERROR_MARGIN);
+	}
+
+	@Test
+	private void TestThreeNumbersNonEqual() {
 		assertArrayEquals("Three numbers, none are equal", expectedResults[7], index.normalize(vectorInputs[7]), ERROR_MARGIN);
 	}
 
