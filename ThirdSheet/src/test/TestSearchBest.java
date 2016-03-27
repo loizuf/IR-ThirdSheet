@@ -1,4 +1,4 @@
-package _thirdTest;
+package test;
 
 import static org.junit.Assert.assertArrayEquals;
 
