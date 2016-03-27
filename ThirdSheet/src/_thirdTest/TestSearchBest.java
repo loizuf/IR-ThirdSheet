@@ -18,16 +18,16 @@ public class TestSearchBest {
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
 
 	// Variable containing an instance of PositionalIndex
-	private Index index;
+	private static Index index;
 	
 	@BeforeClass
-	public void setupBeforeClass() throws FileNotFoundException {
+	public static void setupBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 	}
 
 	@Test
 	public void TestOneTermInMultipleDocuments() {
-		Document doc = new Document("enterprise", "Query");
+		Document doc = new Document("enterprise", "Query6");
 		ArrayList<Integer> arrayList = index.vectorSearch(doc, 7);
 		Integer[] array = arrayList.toArray(new Integer[arrayList.size()]);
 		assertArrayEquals(new Integer[] { 5, 6, 0, 2 }, array);
@@ -35,7 +35,7 @@ public class TestSearchBest {
 
 	@Test
 	public void TestTwoTermInMultipleDocuments() {
-		Document doc = new Document("half logic", "Query");
+		Document doc = new Document("half logic", "Query7");
 		ArrayList<Integer> arrayList = index.vectorSearch(doc, 7);
 		Integer[] array = arrayList.toArray(new Integer[arrayList.size()]);
 		assertArrayEquals(new Integer[] { 1, 3, 2 }, array);
@@ -43,7 +43,7 @@ public class TestSearchBest {
 
 	@Test
 	public void TestLongQuery() {
-		Document doc = new Document("first officer sulu starship reliant", "Query");
+		Document doc = new Document("first officer sulu starship reliant", "Query8");
 		ArrayList<Integer> arrayList = index.vectorSearch(doc, 7);
 		Integer[] array = arrayList.toArray(new Integer[arrayList.size()]);
 		assertArrayEquals(new Integer[] { 6, 5, 1, 4, 0, 2 }, array);
@@ -51,7 +51,7 @@ public class TestSearchBest {
 
 	@Test
 	public void TestOneTermAbsent() {
-		Document doc = new Document("doctor marcus engineer", "Query");
+		Document doc = new Document("doctor marcus engineer", "Query9");
 		ArrayList<Integer> arrayList = index.vectorSearch(doc, 7);
 		Integer[] array = arrayList.toArray(new Integer[arrayList.size()]);
 		assertArrayEquals(new Integer[] { 2, 3 }, array);
@@ -59,7 +59,7 @@ public class TestSearchBest {
 
 	@Test
 	public void TestDoubleTerm() {
-		Document doc = new Document("chief engineer first engineer", "Query");
+		Document doc = new Document("chief engineer first engineer", "Query10");
 		ArrayList<Integer> arrayList = index.vectorSearch(doc, 7);
 		Integer[] array = arrayList.toArray(new Integer[arrayList.size()]);
 		assertArrayEquals(new Integer[] { 3, 2, 6, 1, 4 }, array);

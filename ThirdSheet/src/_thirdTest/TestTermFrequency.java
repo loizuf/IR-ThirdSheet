@@ -16,10 +16,10 @@ public class TestTermFrequency {
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
 	
 	// Variable containing an instance of PositionalIndex
-	private Index index;
+	private static Index index;
 
 	@BeforeClass
-	public void setupBeforeClass() throws FileNotFoundException {
+	public static void setupBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 	}
 

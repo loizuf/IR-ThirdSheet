@@ -14,64 +14,64 @@ public class TestNormalization {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
-	private static final float ERROR_MARGIN = 0.000001f;
+	private static final float ERROR_MARGIN = 0.00001f;
 
 	// Variable containing an instance of PositionalIndex
-	private Index index;
+	private static Index index;
 		
 	// parameterized variables
-	private int[][] vectorInputs;
-	private float[][] expectedResults;
+	private static int[][] vectorInputs;
+	private static float[][] expectedResults;
 
 	@BeforeClass
-	public void setUpBeforeClass() throws FileNotFoundException {
+	public static void setUpBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 		
 		fillVariables();
 	}
 
 	@Test
-	private void TestNoInput() {
-		assertArrayEquals("No Input", expectedResults[0], index.normalize(vectorInputs[0]), ERROR_MARGIN);
+	public void TestNoInput() {
+		assertArrayEquals(expectedResults[0], index.normalize(vectorInputs[0]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestInputZero() {
-		assertArrayEquals("Input is '0'", expectedResults[1], index.normalize(vectorInputs[1]), ERROR_MARGIN);
+	public void TestInputZero() {
+		assertArrayEquals(expectedResults[1], index.normalize(vectorInputs[1]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestInputOne() {
-		assertArrayEquals("Input is '1'", expectedResults[2], index.normalize(vectorInputs[2]), ERROR_MARGIN);
+	public void TestInputOne() {
+		assertArrayEquals(expectedResults[2], index.normalize(vectorInputs[2]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestInputNotOne() {
-		assertArrayEquals("Single number, not '1'", expectedResults[3], index.normalize(vectorInputs[3]), ERROR_MARGIN);
+	public void TestInputNotOne() {
+		assertArrayEquals(expectedResults[3], index.normalize(vectorInputs[3]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestTwoNumbers() {
-		assertArrayEquals("Two numbers", expectedResults[4], index.normalize(vectorInputs[4]), ERROR_MARGIN);
+	public void TestTwoNumbers() {
+		assertArrayEquals(expectedResults[4], index.normalize(vectorInputs[4]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestThreeNumbersTwoEqual() {
-		assertArrayEquals("Three numbers, two are equal", expectedResults[5], index.normalize(vectorInputs[5]), ERROR_MARGIN);
+	public void TestThreeNumbersTwoEqual() {
+		assertArrayEquals(expectedResults[5], index.normalize(vectorInputs[5]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestThreeNumbersAllEqual() {
-		assertArrayEquals("Three numbers, all are equal", expectedResults[6], index.normalize(vectorInputs[6]), ERROR_MARGIN);
+	public void TestThreeNumbersAllEqual() {
+		assertArrayEquals(expectedResults[6], index.normalize(vectorInputs[6]), ERROR_MARGIN);
 	}
 
 	@Test
-	private void TestThreeNumbersNonEqual() {
-		assertArrayEquals("Three numbers, none are equal", expectedResults[7], index.normalize(vectorInputs[7]), ERROR_MARGIN);
+	public void TestThreeNumbersNonEqual() {
+		assertArrayEquals(expectedResults[7], index.normalize(vectorInputs[7]), ERROR_MARGIN);
 	}
 
 	// This method sets up the data for the tests
-	private void fillVariables() {
+	private static void fillVariables() {
 
 		vectorInputs = new int[][]{
 			{},

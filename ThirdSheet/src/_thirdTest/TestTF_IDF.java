@@ -17,13 +17,13 @@ public class TestTF_IDF {
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
 	
 	// Variable containing an instance of PositionalIndex
-	private Index index;
+	private static Index index;
 	
 	// calculation help variable
 	float ERROR_MARGIN = 0.0005f;
 	
 	@BeforeClass
-	public void setupBeforeClass() throws FileNotFoundException {
+	public static void setupBeforeClass() throws FileNotFoundException {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 	}
 
