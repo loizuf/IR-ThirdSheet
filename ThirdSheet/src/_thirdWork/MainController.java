@@ -9,21 +9,18 @@ import _thirdGiven.FileReader;
 
 public class MainController {
 
-	/*
-	 * LoremIpsumCollectionDirectoryPath - Name des Verzeichnisses das die
-	 * Dokumente enthaelt
-	 */
-	private static final String LOREM_IPSUM_COLLECTION_DIRECTORY_PATH = "collections/lorem";
-
+	// directory der Collection
+	static final String COLLECTION_3_DIRECTORY_PATH = "collections/testCollections/third";
+	
 	public static void main(String[] args) throws IOException {
 
 		// collection - Liste aller Document-Objekte
-		ArrayList<Document> collection = FileReader.readCollection(LOREM_IPSUM_COLLECTION_DIRECTORY_PATH);
+		ArrayList<Document> collection = FileReader.readCollection(COLLECTION_3_DIRECTORY_PATH);
 
 		// index - Repraesentation des index
 		Index index = new Index(collection);
 
-		// breakdown the query into two terms
+		// Query einlesen
 		String query = getQueryTerms();
 		
 		Document queryDoc = new Document(query, "Query");
@@ -34,11 +31,8 @@ public class MainController {
 		postResults(result);
 	}
 
-	/*
-	 * Diese Methode liest die Query Terme vom User ein und bereinigt sie (lower case, eliminating whitespace)
-	 */
+	// Diese Methode liest die Query Terme vom User ein (KEINE BEREINIGUNG oder SPALTUNG der Terme)
 	public static String getQueryTerms() {
-		// let's get a query from the user via the command line
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter a query:");
 		String query = scanner.nextLine();
