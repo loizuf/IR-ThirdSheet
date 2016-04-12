@@ -40,8 +40,8 @@ public class Index {
 		}
 	}
 
-	// returns the idf for this term in the collection
-	public int getIDF(String term) {
+	// returns the df for this term in the collection
+	public int getDF(String term) {
 		switch (term) {
 		case "Baum":
 			return 0;

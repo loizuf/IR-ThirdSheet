@@ -10,8 +10,9 @@ import org.junit.Test;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
+// This tests the TF_IDF
 
-public class TestTF_IDF {
+public class Test_1d {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
@@ -27,6 +28,8 @@ public class TestTF_IDF {
 		index = new Index(FileReader.readCollection(TEST_PATH_3));
 	}
 
+	// assertEquals has 3 arguments: value1, value2, delta. delta is used for a margin of error
+	
 	@Test
 	public void TestTermInOneDocument() {
 		assertEquals(0.845f, index.getTF_IDF_Score("was", index.getDocument(0)), ERROR_MARGIN);

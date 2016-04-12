@@ -10,7 +10,7 @@ import org.junit.Test;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-public class TestNormalization {
+public class Test_4 {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
@@ -30,6 +30,8 @@ public class TestNormalization {
 		fillVariables();
 	}
 
+	// assertEquals has 3 arguments: value1, value2, delta. delta is used for a margin of error
+	
 	@Test
 	public void TestNoInput() {
 		assertArrayEquals(expectedResults[0], index.normalize(vectorInputs[0]), ERROR_MARGIN);

@@ -12,7 +12,9 @@ import _thirdGiven.Document;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-public class TestSearchBest {
+// This tests if the result of the search (all results) are correct AND in the correct order
+
+public class Test_5_2 {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";

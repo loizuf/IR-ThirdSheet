@@ -10,7 +10,9 @@ import org.junit.Test;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-public class TestTermFrequency {
+// This tests the term-frequency
+
+public class Test_1b {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
@@ -25,7 +27,7 @@ public class TestTermFrequency {
 
 	@Test
 	public void TestAbsentTerm() {
-		assertEquals(0, index.getTF("Baum", index.getDocument(1)));
+		assertEquals(0, index.getTF("marcus", index.getDocument(1)));
 	}
 
 	@Test

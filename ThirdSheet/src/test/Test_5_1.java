@@ -12,7 +12,9 @@ import _thirdGiven.Document;
 import _thirdGiven.FileReader;
 import _thirdWork.Index;
 
-public class TestSearch {
+// This tests if the top-result of the search (document with the best score) is correct
+
+public class Test_5_1 {
 
 	// Location of test collection
 	private static final String TEST_PATH_3 = "collections/testCollections/third";
