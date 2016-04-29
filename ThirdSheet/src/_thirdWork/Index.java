@@ -16,28 +16,32 @@ public class Index {
 	
 	// 1.b
 	// Gibt die Termfrequenz für dieses Wort in diesem Dokument zurück
-	public int getTF(String term, Document doc) {
-		return 0;
+	// Der return-Typ dieser Methode ist float (obwohl alle Ergebnisse ganzzahlig sind)
+	// um unnötiges casten zu vermeiden
+	public float getTF(String term, Document doc) {
+		return 0.0f;
 		
 	}
 
 	// 1.c
 	// Gibt die Dokumentenfrequenz dieses Terms zurück
-	public int getDF(String term) {
-		return 0;
+	// Der return-Typ dieser Methode ist float (obwohl alle Ergebnisse ganzzahlig sind)
+	// um unnötiges casten zu vermeiden
+	public float getDF(String term) {
+		return 0.0f;
 		
 	}
 	
 	// 1.d
 	// Berechnet den TF.IDF für diesen Term
 	public float getTF_IDF_Score(String term, Document doc) {
-		return 0;
+		return 0.0f;
 		
 	}
 	
 	// 4
 	// Normalisiert einen Vektor
-	public float[] normalize(int[] vector) {
+	public float[] normalize(float[] vector) {
 		return null;
 		
 	}

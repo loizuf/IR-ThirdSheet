@@ -20,7 +20,7 @@ public class Test_4 {
 	private static Index index;
 		
 	// parameterized variables
-	private static int[][] vectorInputs;
+	private static float[][] vectorInputs;
 	private static float[][] expectedResults;
 
 	@BeforeClass
@@ -75,15 +75,15 @@ public class Test_4 {
 	// This method sets up the data for the tests
 	private static void fillVariables() {
 
-		vectorInputs = new int[][]{
+		vectorInputs = new float[][]{
 			{},
-			{0},
-			{1},
-			{9},
-			{3, 4},
-			{3, 5, 3},
-			{25, 25, 25},
-			{7, 3, 6}
+			{0.0f},
+			{1.0f},
+			{9.0f},
+			{3.0f, 4.0f},
+			{3.0f, 5.0f, 3.0f},
+			{25.0f, 25.0f, 25.0f},
+			{7.0f, 3.0f, 6.0f}
 		};
 		expectedResults = new float[][]{
 			{},

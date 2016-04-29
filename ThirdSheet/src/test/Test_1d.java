@@ -21,7 +21,7 @@ public class Test_1d {
 	private static Index index;
 	
 	// calculation help variable
-	float ERROR_MARGIN = 0.0005f;
+	float ERROR_MARGIN = 0.001f;
 	
 	@BeforeClass
 	public static void setupBeforeClass() throws FileNotFoundException {
@@ -32,7 +32,7 @@ public class Test_1d {
 	
 	@Test
 	public void TestTermInOneDocument() {
-		assertEquals(0.845f, index.getTF_IDF_Score("was", index.getDocument(0)), ERROR_MARGIN);
+		assertEquals(0.845f, index.getTF_IDF_Score("iowa", index.getDocument(0)), ERROR_MARGIN);
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class Test_1d {
 
 	@Test
 	public void TestTermMultipleTimesInOneDocument() {
-		assertEquals(0.248f, index.getTF_IDF_Score("doctor", index.getDocument(2)), ERROR_MARGIN);
+		assertEquals(1.248f, index.getTF_IDF_Score("doctor", index.getDocument(2)), ERROR_MARGIN);
 	}
 
 	@Test
