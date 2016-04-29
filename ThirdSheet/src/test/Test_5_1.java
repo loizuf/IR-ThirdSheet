@@ -60,7 +60,7 @@ public class Test_5_1 {
 	@Test
 	public void TestThreeTermsInDifferentDocuments() {
 		Document doc = new Document("first officer sulu", "Query5");
-		assertEquals(7, index.vectorSearch(doc, 1).get(0), 0);
+		assertEquals(5, index.vectorSearch(doc, 1).get(0), 0);
 	}
 
 }
