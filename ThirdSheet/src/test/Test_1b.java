@@ -27,31 +27,31 @@ public class Test_1b {
 
 	@Test
 	public void TestAbsentTerm() {
-		assertEquals(0, index.getTF("marcus", index.getDocument(1)));
+		assertEquals(0, index.getTF("marcus", index.getDocument(1)), 0);
 	}
 
 	@Test
 	public void TestFirstTerm() {
-		assertEquals(1, index.getTF("chief", index.getDocument(3)));
+		assertEquals(1, index.getTF("chief", index.getDocument(3)), 0);
 	}
 
 	@Test
 	public void TestLastTerm() {
-		assertEquals(1, index.getTF("fingers", index.getDocument(3)));
+		assertEquals(1, index.getTF("fingers", index.getDocument(3)), 0);
 	}
 
 	@Test
 	public void TestTermInMultipleDocuments() {
-		assertEquals(1, index.getTF("logic", index.getDocument(1)));
+		assertEquals(1, index.getTF("logic", index.getDocument(1)), 0);
 	}
 
 	@Test
 	public void TestTermMultipleTimesInDocument() {
-		assertEquals(2, index.getTF("helmsman", index.getDocument(5)));
+		assertEquals(2, index.getTF("helmsman", index.getDocument(5)), 0);
 	}
 
 	@Test
 	public void TestTermMultipleTimesInMultipleDocuments() {
-		assertEquals(2, index.getTF("enterprise", index.getDocument(5)));
+		assertEquals(2, index.getTF("enterprise", index.getDocument(5)), 0);
 	}
 }
